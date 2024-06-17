@@ -77953,7 +77953,7 @@ $1(a){return B.Oj},
 $S:438}
 A.If.prototype={
 N(a){var s=null,r=A.A1(s,A.WQ(B.j,B.ae,B.tg,s,s,s,B.cI,B.j,s,s,B.j,s,B.By,s,B.cI,s,s,s,s,s,B.i_,s,s,B.DJ,s,s,B.Dv,s,s,s,s),!0)
-return new A.x6(A.awC(),"","Flutter Demo",r,!1,!1,s)}}
+return new A.x6(A.awC(),"","MozoTap",r,!1,!1,s)}}
 A.qK.prototype={
 N(a){return new A.HE(new A.a1X(),null)}}
 A.a1X.prototype={
