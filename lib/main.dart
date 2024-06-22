@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      title: 'MozoTap',
+      title: 'Mozotap',
       theme: ThemeData(
         colorScheme: ColorScheme(
           brightness: Brightness.light,

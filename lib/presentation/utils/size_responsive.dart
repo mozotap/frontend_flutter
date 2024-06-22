@@ -117,4 +117,17 @@ class SizeResponsive {
       return 480.0;
     }
   }
+
+  static double responsiveSize(BuildContext context, double baseSize) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth <= 320.0) {
+      return baseSize * 0.7;
+    } else if (screenWidth > 320.0 && screenWidth <= 375.0) {
+      return baseSize * 0.8;
+    } else if (screenWidth > 375.0 && screenWidth <= 414.0) {
+      return baseSize * 0.9;
+    } else {
+      return baseSize;
+    }
+  }
 }

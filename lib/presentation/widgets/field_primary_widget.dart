@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mozotap/presentation/utils/app_colors.dart';
 
-class FieldPrimaryWidget extends StatelessWidget {
+class FieldPrimaryWidget extends StatefulWidget {
   final String labelText;
   final String placeholder;
   final TextInputType fieldType;
   final TextEditingController controller;
   final String? Function(String?) validator;
+  final bool isPassword;
 
   const FieldPrimaryWidget({
     super.key,
@@ -15,7 +16,21 @@ class FieldPrimaryWidget extends StatelessWidget {
     required this.fieldType,
     required this.controller,
     required this.validator,
+    this.isPassword = false,
   });
+
+  @override
+  State<FieldPrimaryWidget> createState() => _FieldPrimaryWidgetState();
+}
+
+class _FieldPrimaryWidgetState extends State<FieldPrimaryWidget> {
+  bool _obscureText = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +38,17 @@ class FieldPrimaryWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          labelText,
+          widget.labelText,
           style: const TextStyle(
               fontSize: 16, fontFamily: 'Poppins', color: AppColors.textColor),
         ),
         const SizedBox(height: 8),
         TextFormField(
-          controller: controller,
-          keyboardType: fieldType,
+          controller: widget.controller,
+          keyboardType: widget.fieldType,
+          obscureText: widget.isPassword ? _obscureText : false,
           decoration: InputDecoration(
-            hintText: placeholder,
+            hintText: widget.placeholder,
             hintStyle: const TextStyle(fontSize: 14, fontFamily: 'Poppins'),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
@@ -58,8 +74,17 @@ class FieldPrimaryWidget extends StatelessWidget {
                 width: 2.0,
               ),
             ),
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: AppColors.textLight,
+                    ),
+                    onPressed: _toggleVisibility,
+                  )
+                : null,
           ),
-          validator: validator,
+          validator: widget.validator,
         ),
       ],
     );
